@@ -79,7 +79,7 @@ class AmazonEventCheck(object):
         for stat in stats:
             if stat.events:
                 for event in stat.events:
-                    if re.match('^\[Completed\]', event.description):
+                    if re.match('^\[(Completed|Canceled)\]', event.description):
                         continue
                     ret.append([stat.id, event.code, event.not_before])
         if len(ret) > 0:
